@@ -2,13 +2,15 @@
     terminal demo.
 </h1>
 <p align="center">
-    Make a terminal demo as an svg using existing tools
+    Make a scripted demo for your tools
 </p>
 <p align="center">
     <img src="https://raw.githubusercontent.com/tyhal/terminal-demo/main/demo/demo.svg?sanitize=true" width="572" alt="terminal demo">
 </p>
 
-A simple use case of termsvg with cast text read from a file instead of a manual process
+# What ?
+
+This is a simple script around `termsvg` where the inputs are being read from a file instead of a manual process
 
 ## Dependencies
 
@@ -23,7 +25,9 @@ A simple use case of termsvg with cast text read from a file instead of a manual
 
 ## Input File
 
-Just what you want to send to your shell with tabs using `\t`
+Whatever you want to send to your shell
+
+send tabs with `\t`
 
 ```text
 echo hello world
