@@ -1,0 +1,1 @@
+./script/terminal-demo demo/basic.txt

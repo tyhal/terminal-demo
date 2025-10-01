@@ -1,0 +1,20 @@
+#!/bin/sh
+
+set -e
+
+if ! command -v termsvg >/dev/null 2>&1; then
+    echo please install https://github.com/mrmarble/termsvg
+    echo go install github.com/mrmarble/termsvg/cmd/termsvg@latest
+    exit 1
+fi
+
+# Check if exactly one argument is given
+if [ "$#" -ne 1 ]; then
+    echo "Usage: $0 <file_path>"
+    exit 1
+fi
+file_path="$1"
+name="${file_path%.*}"
+
+termsvg rec --command "$(dirname "$0")/terminal-replay $file_path" "$name.cast"
+termsvg export "$name.cast" -o "$name.svg"

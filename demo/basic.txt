@@ -1,0 +1,3 @@
+echo hello world
+cd \td\t
+cat basic.txt
