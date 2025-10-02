@@ -5,7 +5,7 @@
     Make a scripted demo for your tools
 </p>
 <p align="center">
-    <img src="https://raw.githubusercontent.com/tyhal/terminal-demo/main/demo/demo.svg?sanitize=true" width="572" alt="terminal demo">
+    <img src="demo/demo.svg" width="580" alt="terminal demo">
 </p>
 
 # What ?

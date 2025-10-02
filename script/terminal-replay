@@ -10,8 +10,9 @@ import sys
 import select
 import re
 import fcntl, termios, struct
+from functools import reduce
 
-prompt_regex = re.compile("❯")
+prompt_regex = re.compile(os.getenv("PROMPT_START","❯|#"))
 
 if len(sys.argv) != 2:
     print(f"Usage: {sys.argv[0]} <file_path>")
@@ -25,6 +26,14 @@ typing_chars = string.ascii_letters + string.digits
 # Load the replay data
 with open(file_path, 'r') as f:
     data = f.read()
+
+special = [
+    ('\\t','\t'),
+    ('\\b','\b')
+]
+
+data = reduce(lambda txt, rep: txt.replace(*rep), special, data)
+
 data = data.replace('\\t', '\t')
 
 # Create a pseudo-terminal and spawn zsh
