@@ -2,7 +2,7 @@
     terminal demo.
 </h1>
 <p align="center">
-    Make a scripted demo for your tools
+    make a scripted demo for your tools
 </p>
 <p align="center">
     <img src="demo/demo.svg" width="580" alt="terminal demo">
