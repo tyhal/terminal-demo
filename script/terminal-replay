@@ -9,6 +9,7 @@ import string
 import sys
 import select
 import re
+import shutil
 import fcntl, termios, struct
 from functools import reduce
 
@@ -50,7 +51,8 @@ def spawn_shell():
         env = os.environ.copy()
         env['LINES'] = str(rows)
         env['COLUMNS'] = str(cols)
-        os.execve('/bin/zsh', ['zsh'], env)
+        zsh_path = shutil.which('zsh') or '/bin/zsh'
+        os.execve(zsh_path, ['zsh'], env)
     else:
         winsize = struct.pack("HHHH", rows, cols, 0, 0)
         fcntl.ioctl(fd, termios.TIOCSWINSZ, winsize)

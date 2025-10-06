@@ -16,5 +16,6 @@ fi
 file_path="$1"
 name="${file_path%.*}"
 
+clear
 termsvg rec --command "$(dirname "$0")/terminal-replay $file_path" "$name.cast"
 termsvg export "$name.cast" -o "$name.svg"
