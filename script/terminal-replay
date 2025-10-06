@@ -94,7 +94,6 @@ stop_event = threading.Event()
 prompt_found_event = threading.Event()
 
 def read_output():
-    buffer = ''
     while not stop_event.is_set():
         rlist, _, _ = select.select([fd], [], [], 0.01)
         if fd in rlist:
@@ -103,8 +102,7 @@ def read_output():
                 if output:
                     sys.stdout.write(output)
                     sys.stdout.flush()
-                    buffer += output
-                    if prompt_regex.search(buffer):
+                    if prompt_regex.search(output):
                         prompt_found_event.set()
                         buffer = ''
             except OSError:
@@ -123,6 +121,7 @@ for char in data:
     elif char == '\t':
         time.sleep(1)
     elif char == '\n':
+        prompt_found_event.clear()
         time.sleep(2)
     else:
         time.sleep(0.3)
